@@ -1,3 +1,8 @@
+/* UVa 11450 - Wedding Shopping - Top Down */
+// this code is similar to recursive backtracking code
+// Solved by Top-Down Backtracking
+
+
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
@@ -13,34 +18,53 @@ using namespace std;
 int dx[] = {0, 0, 1, -1};
 int dy[] = {1, -1, 0, 0};
 
+vector<vector<int>> price(25, vector<int>(25));
+int Money, item, inf = 1e15;
+int dp[250][25];
+
+int calc(int money_baki, int idx)
+{
+    if (money_baki < 0)
+        return (-1LL) * inf;
+
+    if (idx == item)
+        return Money - money_baki;
+
+    if (dp[money_baki][idx] != -1)
+        return dp[money_baki][idx];
+
+    int ans = -1;
+    for (int i = 1; i <= price[idx][0]; i++)
+        ans = max(ans, calc(money_baki - price[idx][i], idx + 1));
+
+    return dp[money_baki][idx] = ans;
+}
 signed main()
 {
     TheAnt;
-    int n;
-    cin >> n;
-    vector<int> v(n), pre(n + 1);
-    for (int i = 0; i < n; i++)
-    {
-        cin >> v[i];
-        pre[i + 1] = pre[i] + v[i];
-    }
 
-    int ans = 0, j = 0, i = 0;
-    set<int> st = {0};
-
-    while (j < n)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        while (i < n && !st.count(pre[i + 1]))
+        cin >> Money >> item;
+
+        for (int i = 0; i < item; i++)
         {
-            i++;
-            st.insert(pre[i]);
+            cin >> price[i][0];
+            for (int j = 1; j <= price[i][0]; j++)
+                cin >> price[i][j];
         }
 
-        ans += (i - j);
-        st.erase(pre[j]);
-        j++;
+        memset(dp, -1, sizeof dp);
+
+        int ans = calc(Money, 0);
+
+        if (ans < 0)
+            cout << "no solution" << '\n';
+        else
+            cout << ans << '\n';
     }
 
-    cout << ans << '\n';
     return 0;
 }
