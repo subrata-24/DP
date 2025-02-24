@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define pb push_back
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define gcd(a, b) __gcd(a, b)
+#define lcm(a, b) a / __gcd(a, b) * b
+#define mod 1000000007
+#define TheAnt                        \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);
+int dx[] = {0, 0, 1, -1};
+int dy[] = {1, -1, 0, 0};
+
+signed main()
+{
+    TheAnt;
+    int n;
+    cin >> n;
+    vector<int> v(n), pre(n + 1);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> v[i];
+        pre[i + 1] = pre[i] + v[i];
+    }
+
+    int ans = 0, j = 0, i = 0;
+    set<int> st = {0};
+
+    while (j < n)
+    {
+        while (i < n && !st.count(pre[i + 1]))
+        {
+            i++;
+            st.insert(pre[i]);
+        }
+
+        ans += (i - j);
+        st.erase(pre[j]);
+        j++;
+    }
+
+    cout << ans << '\n';
+    return 0;
+}
