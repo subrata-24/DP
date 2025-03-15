@@ -1,4 +1,4 @@
-//URL:https://lightoj.com/problem/generating-palindromes
+//URL:   https://lightoj.com/problem/generating-palindromes
 //Solution by:Subrata Biswas
 
 
