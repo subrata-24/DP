@@ -45,11 +45,11 @@ signed main()
             }
         }
 
-        int ans1 = calc(n - 1, 0, vp, dp);
-        int ans2 = calc(n - 1, 1, vp, dp);
-        int ans3 = calc(n - 1, 2, vp, dp);
+        int ans = INT_MAX;
+        for (int i = 0; i < 3; i++)
+            ans = min(ans, calc(n - 1, i, vp, dp));
 
-        cout << "Case " << tt << ": " << min(ans1, min(ans2, ans3)) << '\n';
+        cout << "Case " << tt << ": " << ans << '\n';
     }
     return 0;
 }
