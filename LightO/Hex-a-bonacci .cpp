@@ -1,4 +1,4 @@
-//URL:   https://lightoj.com/problem/generating-palindromes
+//URL:   https://lightoj.com/problem/hex-a-bonacci
 //Solution by: Subrata Biswas
 
 #include <bits/stdc++.h>
