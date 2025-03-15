@@ -1,5 +1,5 @@
 //URL:   https://lightoj.com/problem/generating-palindromes
-//Solution by:Subrata Biswas
+//Solution by: Subrata Biswas
 
 
 #include <bits/stdc++.h>
