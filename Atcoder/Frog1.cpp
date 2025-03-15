@@ -1,4 +1,4 @@
-//URL: https://atcoder.jp/contests/tessoku-book/tasks/dp_a?lang=en
+//URL: https://atcoder.jp/contests/dp/tasks/dp_a
 //Solution by: Subrata Biswas
 
 #include <bits/stdc++.h>
